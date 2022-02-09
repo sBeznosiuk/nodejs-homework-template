@@ -54,7 +54,11 @@ router.post('/', async (req, res, next) => {
         .json({ message: 'All fields are mandatory!' });
     }
 
-    const contacts = await addContact(body);
+    const contacts = await addContact({
+      name,
+      email,
+      phone,
+    });
 
     console.log(contacts);
 
