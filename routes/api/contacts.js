@@ -46,8 +46,9 @@ router.get('/:contactId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const body = await req.body;
-    if (!body.name || !body.email || !body.phone) {
+    const { name, email, phone } = await req.body;
+
+    if (!name || !email || !phone) {
       return res
         .status(400)
         .json({ message: 'All fields are mandatory!' });
